@@ -581,83 +581,105 @@ span {
 
 /* projexts design */
 
-/* .portfolio {
-    padding-bottom: 7rem;
-}
-
-.portfolio h2 {
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.portfolio-container {
-    padding-top: 7rem;
-}
-
-.portfolio .portfolio-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.portfolio-container .portfolio-box {
-    position: relative;
-    display: flex;
-    
-    box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
-    overflow: hidden;
-}
-
-.portfolio-box img {
-    width: 100%;
-    border-radius: 2rem ;
-    height: 100%;
-}
-
-.portfolio-box .square-box {
-    position: absolute;
-    top: -7%;
-    left: -10%;
-    transform: translate(-50%, -50%) rotate(0);
-    width: 120%;
-    height: 115%;
-    border-radius: 10%;
-    border: .3rem solid var(--main-color);
-    animation: aboutSpinner 8s linear infinite;
-}
-
-
-.portfolio-box .portfolio-layer {
-    position: absolute;
-    bottom: 0;
-    top: 100%;
-    width: 100%;
-    height: 100%;
+.portfolio {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     flex-direction: column;
-    padding: 0 4rem;
+    min-height: auto;
+    padding-bottom: 5rem;
 }
 
-.portfolio-layer h4{
-    font-size: 2rem;
-    color:var(--text-color);
-    margin-bottom: 40px;
+.portfolio .portfolio-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
 }
 
-.portfolio-layer .rectangle-box {
+.portfolio-row .portfolio-column {
+    flex: 1 1 40rem;
+
+}
+
+.portfolio-column .title {
+    position: relative;
+    display: inline-block;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 2rem;
+
+}
+
+.portfolio-column .portfolio-box {
+    position: relative;
+    border-left: .2rem solid var(--main-color);
+    width: 55rem; /* Set a fixed width */
+    height: 54rem; /* Set a fixed height */
+    cursor: pointer;
+}
+
+
+.portfolio-box .portfolio-content {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.portfolio-box .portfolio-content::before {
+    content: '';
     position: absolute;
-    top: 57px;
-    left: -12px;
-    width: 115%;
-    height: 23%;
-    border-radius: 15%;
-    border: 3px solid var(--main-color);
+    top: 0;
+    left: -1.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--main-color);
+    border-radius: 50%;
     
-} */
+}
+
+.portfolio-content .content {
+    position: relative;
+    padding: 1.5rem;
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.portfolio-content .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background:var(--second-bg-color);
+    z-index: -1;
+    transition: .5s;
+}
+
+.portfolio-content .content:hover::before {
+    width: 100%;
+}
+
+
+.portfolio-content .content .year {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    padding-bottom: .5rem;
+}
+
+.portfolio-content .content .year i {
+    padding-right: .5rem;
+}
+
+.portfolio-content .content h3 {
+    font-size: 2rem;
+}
+
+.portfolio-content .content pre {
+    font-size:1.5rem;
+    padding-top: .5rem;
+}
+
 /* contact design */
 
 .contact {
@@ -843,11 +865,16 @@ section:nth-child(odd) .animate.scroll,
 .education .education-box .animate.scroll {
     width: 105%;
 }
+.portfolio .portfolio-box .animate.scroll {
+    width: 105%;
+}
 
 .about.show-animate .animate.scroll,
 .education.show-animate .animate.scroll,
 .education.show-animate .education-box .animate.scroll,
  .skills.show-animate .animate.scroll,
+ .portfolio.show-animate .animate.scroll,
+.portfolio.show-animate .portfolio-box .animate.scroll,
  .contact.show-animate .animate.scroll,
  .footer.show-animate .animate.scroll{
     transition-delay:calc(.3s * var(--i));
@@ -979,6 +1006,10 @@ section:nth-child(odd) .animate.scroll,
     }
 
     .education {
+        padding: 10rem 4% 5rem 5%;
+    }
+
+    .portfolio {
         padding: 10rem 4% 5rem 5%;
     }
 
